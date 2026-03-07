@@ -20,9 +20,9 @@ export async function POST(req: NextRequest) {
             body: JSON.stringify({
                 pinataContent: receiptData,
                 pinataMetadata: {
-                    name: `FlowPay-Receipt-${txHash?.slice(0, 8) || "unknown"}`,
+                    name: `SubLedger-Receipt-${txHash?.slice(0, 8) || "unknown"}`,
                     keyvalues: {
-                        app: "flowpay",
+                        app: "subledger",
                         type: "payment_receipt",
                         tx_hash: txHash || "",
                     },

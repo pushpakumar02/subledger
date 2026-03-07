@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
 
         // Pin receipt to Pinata via our pinata API route
         const receiptData = {
-            flowpay_version: "1.0.0",
+            subledger_version: "1.0.0",
             type: "subscription_escrow",
             description,
             sender: senderWallet.address,

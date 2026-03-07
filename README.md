@@ -1,4 +1,4 @@
-# FlowPay 💸
+# SubLedger 💸
 
 > **Recurring payments for everyone** — Stripe-like subscriptions powered by XRPL escrow, IPFS-verified receipts via Pinata, and natural-language setup with Gemini AI. No bank required.
 
@@ -8,11 +8,11 @@ Built at **Midwest Blockathon 2025** 🏆
 
 ## 🎯 What It Does
 
-FlowPay lets anyone — a creator, freelancer, or small business — set up recurring crypto payments (subscriptions) using the XRP Ledger, without needing a bank account.
+SubLedger lets anyone — a creator, freelancer, or small business — set up recurring crypto payments (subscriptions) using the XRP Ledger, without needing a bank account.
 
 **Example flow:**
 1. A creator describes their subscription in plain English → Gemini AI fills in the details
-2. FlowPay creates a time-locked **EscrowCreate** transaction on XRPL Testnet
+2. SubLedger creates a time-locked **EscrowCreate** transaction on XRPL Testnet
 3. A permanent, tamper-proof receipt is pinned to **IPFS via Pinata**
 4. Anyone can verify the payment on the XRPL Explorer or via IPFS
 
@@ -50,8 +50,8 @@ FlowPay lets anyone — a creator, freelancer, or small business — set up recu
 
 ### 1. Clone & Install
 ```bash
-git clone https://github.com/pushpakumar02/flowpay.git
-cd flowpay
+git clone https://github.com/pushpakumar02/subledger.git
+cd subledger
 npm install
 ```
 

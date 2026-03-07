@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
         const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-        const systemPrompt = `You are FlowPay's AI assistant. Help users set up recurring crypto payments on XRPL.
+        const systemPrompt = `You are SubLedger's AI assistant. Help users set up recurring crypto payments on XRPL.
     
 Given a user's natural language description, extract:
 1. Amount in XRP (reasonable default: 5-100 XRP)

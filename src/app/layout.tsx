@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "FlowPay — Recurring Payments for Everyone",
+  title: "SubLedger — Recurring Payments for Everyone",
   description: "Stripe-like recurring payments for the unbanked, powered by XRPL. Send and receive crypto subscriptions with AI-assisted setup, IPFS-verified receipts, and real-time on-chain settlement.",
   keywords: "XRPL, XRP Ledger, recurring payments, crypto subscriptions, DeFi, microfinance, RLUSD, Pinata, IPFS",
   openGraph: {
-    title: "FlowPay — Recurring Payments for Everyone",
-    description: "Decentralized subscription infrastructure powered by XRPL, Pinata & Gemini AI",
+    title: "SubLedger — Recurring Payments for Everyone",
+    description: "SubLedger — Decentralized subscription infrastructure powered by XRPL, Pinata & Gemini AI",
     type: "website",
   },
 };

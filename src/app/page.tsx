@@ -229,7 +229,7 @@ export default function Home() {
           senderSeed: form.senderSeed,
           recipientAddress: form.recipientAddress,
           amountXRP: parseFloat(form.amountXRP),
-          description: form.description || "FlowPay Subscription",
+          description: form.description || "SubLedger Subscription",
           intervalDays: parseInt(form.intervalDays),
         }),
       });
@@ -283,9 +283,9 @@ export default function Home() {
             background: "linear-gradient(135deg, #4f7cff, #7c3aed)",
             display: "flex", alignItems: "center", justifyContent: "center",
             fontWeight: 900, fontSize: "18px", color: "white",
-          }}>F</div>
+          }}>S</div>
           <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: "20px" }}>
-            Flow<span className="gradient-text">Pay</span>
+            Sub<span className="gradient-text">Ledger</span>
           </span>
         </div>
 
@@ -803,7 +803,7 @@ export default function Home() {
         {activeTab === "how" && (
           <div className="slide-up" style={{ maxWidth: "700px", margin: "0 auto", padding: "0 24px" }}>
             <h2 style={{ textAlign: "center", fontSize: "2rem", fontWeight: 800, marginBottom: "8px" }}>
-              How <span className="gradient-text">FlowPay</span> Works
+              How <span className="gradient-text">SubLedger</span> Works
             </h2>
             <p style={{ textAlign: "center", color: "var(--text-secondary)", marginBottom: "40px" }}>
               Three technologies, one seamless payment experience.
@@ -814,19 +814,19 @@ export default function Home() {
               {
                 step: "01", color: "#4f7cff",
                 title: "Describe Your Subscription (Gemini AI)",
-                desc: "Tell FlowPay what you want in plain English — 'monthly newsletter for 5 XRP' or 'weekly podcast access'. Gemini AI parses your intent and fills in the payment details automatically. No crypto knowledge required.",
+                desc: "Tell SubLedger what you want in plain English — 'monthly newsletter for 5 XRP' or 'weekly podcast access'. Gemini AI parses your intent and fills in the payment details automatically. No crypto knowledge required.",
                 tech: "Google Gemini 1.5 Flash",
               },
               {
                 step: "02", color: "#7c3aed",
                 title: "Escrow Created on XRPL",
-                desc: "FlowPay creates an EscrowCreate transaction on the XRP Ledger Testnet. The funds are locked in a time-based escrow — they release to the recipient automatically when the subscription period completes. All on-chain, trustless.",
+                desc: "SubLedger creates an EscrowCreate transaction on the XRP Ledger Testnet. The funds are locked in a time-based escrow — they release to the recipient automatically when the subscription period completes. All on-chain, trustless.",
                 tech: "XRP Ledger Testnet · EscrowCreate",
               },
               {
                 step: "03", color: "#06b6d4",
                 title: "Receipt Pinned to IPFS (Pinata)",
-                desc: "Instantly after the transaction, FlowPay uploads a structured JSON receipt to IPFS via Pinata. This receipt contains the TX hash, sender, recipient, amount, and timestamp — permanently and immutably stored. Anyone can verify.",
+                desc: "Instantly after the transaction, SubLedger uploads a structured JSON receipt to IPFS via Pinata. This receipt contains the TX hash, sender, recipient, amount, and timestamp — permanently and immutably stored. Anyone can verify.",
                 tech: "Pinata · IPFS · CIDv1",
               },
               {
