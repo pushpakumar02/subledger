@@ -168,7 +168,9 @@ export default function Create() {
                         <span style={{ fontSize: "20px" }}>💵</span>
                         <div>
                             <strong>RLUSD</strong> — Ripple's USD stablecoin on XRPL Testnet. SubLedger auto-sets the trust line then sends the payment.
-                            {" "}<a href="https://tryrlusd.com" target="_blank" rel="noopener noreferrer" style={{ color: "#4f7cff" }}>Get RLUSD →</a>
+                            <div style={{ marginTop: "4px", color: "#10b981", fontWeight: 500 }}>
+                                ⚠️ Important: Both the Sender and Recipient wallets MUST be manually funded with test RLUSD first before subscribing. <a href="https://tryrlusd.com" target="_blank" rel="noopener noreferrer" style={{ color: "#4f7cff", whiteSpace: "nowrap" }}>Get RLUSD here →</a>
+                            </div>
                         </div>
                     </div>
                 )}
