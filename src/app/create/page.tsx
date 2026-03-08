@@ -93,19 +93,19 @@ export default function Create() {
                             ].filter(Boolean).map((item: any, i) => (
                                 <div key={i} style={{
                                     background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)",
-                                    borderRadius: "8px", padding: "12px",
-                                    display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px",
+                                    borderRadius: "8px", padding: "12px 16px",
+                                    display: "grid", gridTemplateColumns: "130px 1fr auto 20px", alignItems: "center", gap: "12px",
                                 }}>
-                                    <span style={{ color: "var(--text-secondary)", fontSize: "12px", flexShrink: 0 }}>{item.label}</span>
-                                    <div style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: 0 }}>
-                                        <span style={{
-                                            fontFamily: "monospace", fontSize: "12px",
-                                            overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
-                                        }}>{item.value}</span>
-                                        <CopyBtn text={item.value} />
+                                    <span style={{ color: "var(--text-secondary)", fontSize: "13px" }}>{item.label}</span>
+                                    <span style={{
+                                        fontFamily: "monospace", fontSize: "13px", color: "var(--text-primary)",
+                                        overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
+                                    }}>{item.value}</span>
+                                    <CopyBtn text={item.value} />
+                                    <div style={{ display: "flex", justifyContent: "center" }}>
                                         {item.link && (
                                             <a href={item.link} target="_blank" rel="noopener noreferrer"
-                                                style={{ color: "#4f7cff", flexShrink: 0 }}><Icons.Link /></a>
+                                                style={{ color: "#4f7cff", display: "flex" }}><Icons.Link /></a>
                                         )}
                                     </div>
                                 </div>
