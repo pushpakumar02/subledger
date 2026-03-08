@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { pinReceiptToIPFS } from "../pin-receipt/route";
 
 const XRPL_TESTNET = "https://s.altnet.rippletest.net:51234";
 
@@ -122,14 +123,7 @@ export async function POST(req: NextRequest) {
                 engine_result: paymentResult.engine_result,
             };
 
-            const origin = req.headers.get("origin") || `https://${req.headers.get("host")}`;
-            const pinataRes = await fetch(`${origin}/api/pin-receipt`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ receiptData, txHash }),
-            });
-            const pinataJson = await pinataRes.json();
-            ipfsCid = pinataJson.cid;
+            ipfsCid = await pinReceiptToIPFS(receiptData, txHash);
         } catch (e) {
             console.error("Pinata error (non-fatal):", e);
         }
