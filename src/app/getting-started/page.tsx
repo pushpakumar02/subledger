@@ -21,8 +21,8 @@ export default function GettingStarted() {
         },
         {
             step: "03",
-            title: "Submit & Secure",
-            desc: "Paste your recipient's address (or use our Demo Address), set your amount, and hit confirm. SubLedger will sign the transaction on-chain and instantly pin a cryptographic receipt to IPFS for permanent proof.",
+            title: "Test RLUSD Stablecoin",
+            desc: "To test Ripple's official stablecoin, you must get test RLUSD. Click the blue 'Get RLUSD' link to visit Ripple's faucet. Paste both your Sender and Recipient addresses in their portal to mathematically open the stablecoin trustline. Then, hit Send!",
             color: "#10b981",
             tag: "tryrlusd.com"
         },
