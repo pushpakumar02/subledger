@@ -71,9 +71,11 @@ export function Navigation() {
             {/* TICKER */}
             <div style={{
                 position: "fixed", top: "64px", left: 0, right: 0, zIndex: 99,
-                background: "rgba(79,124,255,0.08)", borderBottom: "1px solid rgba(79,124,255,0.1)",
+                background: "rgba(5,5,16,0.90)", backdropFilter: "blur(20px)",
+                borderBottom: "1px solid rgba(79,124,255,0.1)",
                 height: "36px", overflow: "hidden", display: "flex", alignItems: "center",
             }}>
+                <div style={{ position: "absolute", inset: 0, background: "rgba(79,124,255,0.05)", zIndex: -1 }} />
                 <div className="ticker-track" style={{ display: "flex", gap: "48px", whiteSpace: "nowrap", paddingLeft: "48px" }}>
                     {tickerItems.map((item, i) => (
                         <span key={i} style={{ fontSize: "13px", color: "var(--text-secondary)", flexShrink: 0 }}>{item}</span>
