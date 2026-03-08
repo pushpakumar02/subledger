@@ -10,28 +10,34 @@ export default function HowItWorks() {
                     Getting <span className="gradient-text">Started</span>
                 </h2>
                 <p style={{ textAlign: "center", color: "var(--text-secondary)", marginBottom: "40px" }}>
-                    Three technologies, one seamless payment experience.
+                    Follow these simple steps to test SubLedger's cutting-edge payment infrastructure.
                 </p>
 
                 {/* Steps */}
                 {[
                     {
                         step: "01", color: "#4f7cff",
-                        title: "Escrow Created or RLUSD Sent",
-                        desc: "SubLedger creates an EscrowCreate transaction or RLUSD Payment on the XRP Ledger Testnet. Escrowed funds release automatically when the period completes.",
-                        tech: "XRP Ledger Testnet",
+                        title: "Get a Test Wallet",
+                        desc: "Go to the 'Wallet' tab and click 'Get Wallet'. The XRPL Testnet instantly generates a real wallet for you and funds it with 100 free test XRP. This is your 'Sender' wallet.",
+                        tech: "Testnet Faucet",
                     },
                     {
                         step: "02", color: "#7c3aed",
-                        title: "Receipt Pinned to IPFS",
-                        desc: "Instantly after the transaction, SubLedger uploads a structured JSON receipt to IPFS via Pinata. This receipt contains the TX hash and details—immutably stored.",
-                        tech: "Pinata · IPFS",
+                        title: "Test 'XRP Smart Escrow'",
+                        desc: "Go to the 'Create' tab. Click the 'Use Demo Address' button to instantly fill in a Recipient. Since your wallet organically holds native XRP, you can immediately hit 'Lock in XRP Escrow' to see your funds securely locked on-chain!",
+                        tech: "Native XRP",
                     },
                     {
-                        step: "03", color: "#06b6d4",
-                        title: "Verify Anywhere",
-                        desc: "Share your IPFS CID or XRPL TX hash with anyone. They can verify the payment on the XRPL Explorer or retrieve the receipt. No middleman required.",
-                        tech: "XRPL Explorer",
+                        step: "03", color: "#10b981",
+                        title: "Test 'RLUSD Stablecoin'",
+                        desc: "To test Ripple's official stablecoin, you must get test RLUSD. Click the blue 'Get RLUSD' link to visit Ripple's faucet. Paste both your Sender and Recipient addresses in their portal to mathematically open the stablecoin trustline. Then, hit Send!",
+                        tech: "tryrlusd.com",
+                    },
+                    {
+                        step: "04", color: "#06b6d4",
+                        title: "View your immuntable receipt",
+                        desc: "Instantly after sending a payment or escrow, SubLedger uploads a structured JSON receipt directly to the decentralized IPFS network. You can copy the IPFS CID or view the raw TX Hash live on the XRPL Explorer!",
+                        tech: "Pinata IPFS",
                     },
                 ].map((item, i) => (
                     <div key={i} style={{ display: "flex", gap: "20px", marginBottom: "32px" }}>
@@ -43,9 +49,9 @@ export default function HowItWorks() {
                                 fontWeight: 900, fontSize: "14px", color: item.color,
                                 fontFamily: "'Space Grotesk', sans-serif",
                             }}>{item.step}</div>
-                            {i < 2 && <div style={{ width: 2, flex: 1, background: `linear-gradient(to bottom, ${item.color}40, transparent)`, marginTop: "8px" }} />}
+                            {i < 3 && <div style={{ width: 2, flex: 1, background: `linear-gradient(to bottom, ${item.color}40, transparent)`, marginTop: "8px" }} />}
                         </div>
-                        <div className="glass-card" style={{ flex: 1, padding: "20px", marginBottom: i < 2 ? "0" : undefined }}>
+                        <div className="glass-card" style={{ flex: 1, padding: "20px", marginBottom: i < 3 ? "0" : undefined }}>
                             <div style={{ fontWeight: 700, fontSize: "16px", marginBottom: "8px" }}>{item.title}</div>
                             <div style={{ color: "var(--text-secondary)", fontSize: "14px", lineHeight: 1.6, marginBottom: "12px" }}>
                                 {item.desc}
