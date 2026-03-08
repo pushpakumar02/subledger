@@ -505,7 +505,7 @@ export default function Home() {
               }}>
                 <div>
                   <div style={{ fontWeight: 600, fontSize: "14px", marginBottom: "2px" }}>Need a test wallet?</div>
-                  <div style={{ color: "var(--text-secondary)", fontSize: "12px" }}>Get 1,000 test XRP from faucet instantly</div>
+                  <div style={{ color: "var(--text-secondary)", fontSize: "12px" }}>Get 100 test XRP from faucet instantly</div>
                 </div>
                 <button className="btn-primary" onClick={() => { fundWallet(); }} disabled={fundingWallet}
                   style={{ padding: "10px 18px", fontSize: "13px", display: "flex", alignItems: "center", gap: "6px", flexShrink: 0 }}>
@@ -694,7 +694,7 @@ export default function Home() {
                 🚰 Get a Funded Test Wallet (XRP)
               </h3>
               <p style={{ color: "var(--text-secondary)", fontSize: "13px", marginBottom: "20px" }}>
-                Generate a new XRPL Testnet wallet with 1,000 XRP from the official faucet. Use this to test subscriptions.
+                Generate a new XRPL Testnet wallet with 100 XRP from the official faucet. Use this to test subscriptions.
               </p>
 
               <button className="btn-primary" onClick={fundWallet} disabled={fundingWallet}
