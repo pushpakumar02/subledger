@@ -29,8 +29,8 @@ export async function POST(req: NextRequest) {
         const faucetData = await faucetRes.json();
 
         const address = faucetData.account?.address || faucetData.account?.classicAddress;
-        const seed = faucetData.account?.secret || faucetData.account?.seed;
-        const balance = faucetData.balance || 1000;
+        const seed = faucetData.seed || faucetData.account?.secret; // Fix: seed is top-level
+        const balance = faucetData.amount || 100; // Faucet now gives 100
 
         if (!address || !seed) {
             throw new Error("Faucet did not return a valid wallet");
