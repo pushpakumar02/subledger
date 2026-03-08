@@ -33,15 +33,15 @@ async function deriveWallet(seed: string) {
 async function signTx(txJson: any, seed: string) {
   const xrpl = await import("xrpl");
   const wallet = xrpl.Wallet.fromSeed(seed);
-  
+
   // Get account info for sequence number
   const accountInfo = await xrplRequest("account_info", {
     account: wallet.address,
     ledger_index: "current",
   });
-  
+
   const sequence = accountInfo.account_data.Sequence;
-  
+
   // Get current ledger
   const ledger = await xrplRequest("ledger_current", {});
   const currentLedger = ledger.ledger_current_index;
@@ -86,9 +86,9 @@ export async function POST(req: NextRequest) {
       tx_blob: signed.tx_blob,
     });
 
-    if (submitResult.engine_result !== "tesSUCCESS" && 
-        submitResult.engine_result !== "terQUEUED" &&
-        !submitResult.engine_result?.startsWith("tes")) {
+    if (submitResult.engine_result !== "tesSUCCESS" &&
+      submitResult.engine_result !== "terQUEUED" &&
+      !submitResult.engine_result?.startsWith("tes")) {
       throw new Error(`Transaction failed: ${submitResult.engine_result_message || submitResult.engine_result}`);
     }
 

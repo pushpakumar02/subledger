@@ -35,25 +35,31 @@ Respond ONLY with valid JSON (no markdown, no backticks):
 
 User's request: "${prompt}"`;
 
-        // Call Gemini REST API directly (avoids SDK network issues)
-        const geminiRes = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
-            {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    contents: [{ parts: [{ text: systemPrompt }] }],
-                    generationConfig: { temperature: 0.1, maxOutputTokens: 200 },
-                }),
-            }
-        );
+        // Try models in order until one works
+        const models = ["gemini-2.0-flash-lite", "gemini-1.5-flash", "gemini-pro"];
+        let geminiData: any = null;
+        let lastErr = "";
 
-        if (!geminiRes.ok) {
-            const errText = await geminiRes.text();
-            throw new Error(`Gemini API error ${geminiRes.status}: ${errText.slice(0, 100)}`);
+        for (const model of models) {
+            const geminiRes = await fetch(
+                `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`,
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: systemPrompt }] }],
+                        generationConfig: { temperature: 0.1, maxOutputTokens: 200 },
+                    }),
+                }
+            );
+            if (geminiRes.ok) {
+                geminiData = await geminiRes.json();
+                break;
+            }
+            lastErr = `${model}: ${geminiRes.status}`;
         }
 
-        const geminiData = await geminiRes.json();
+        if (!geminiData) throw new Error(`All models failed — ${lastErr}`);
         const text = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || "";
 
         if (!text) throw new Error("Empty response from Gemini");
