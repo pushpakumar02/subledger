@@ -5,7 +5,7 @@ import { Icons, FeatureCard, StatCard } from "@/components/Shared";
 export default function HowItWorks() {
     return (
         <main style={{ paddingTop: "120px", paddingBottom: "80px" }}>
-            <div className="slide-up" style={{ maxWidth: "700px", margin: "0 auto", padding: "0 24px" }}>
+            <div className="slide-up" style={{ maxWidth: "900px", margin: "0 auto", padding: "0 24px" }}>
                 <h2 style={{ textAlign: "center", fontSize: "2rem", fontWeight: 800, marginBottom: "8px" }}>
                     How <span className="gradient-text">SubLedger</span> Works
                 </h2>

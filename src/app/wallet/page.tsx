@@ -51,7 +51,7 @@ export default function WalletManager() {
 
     return (
         <main style={{ paddingTop: "120px", paddingBottom: "80px" }}>
-            <div className="slide-up" style={{ maxWidth: "620px", margin: "0 auto", padding: "0 24px" }}>
+            <div className="slide-up" style={{ maxWidth: "900px", margin: "0 auto", padding: "0 24px" }}>
                 <h2 style={{ textAlign: "center", fontSize: "2rem", fontWeight: 800, marginBottom: "8px" }}>
                     <span className="gradient-text">Wallet</span> Manager
                 </h2>
