@@ -7,24 +7,31 @@ export default function GettingStarted() {
     const steps = [
         {
             step: "01",
-            title: "Wallet Manager",
-            desc: "Visit the 'Wallet' tab to manage your test accounts. You can 'Fund' a new wallet to instantly get 100 test XRP, or use the 'Lookup' tool to check the live balance and transaction status of any XRPL address.",
+            title: "Prepare Your Wallet",
+            desc: "Start by visiting the 'Wallet' tab. You can instantly generate a fresh XRPL Testnet address with 100 test XRP. Copy your Address and Secret Seed—you'll need them to sign your first transaction.",
             icon: <Icons.Wallet />,
             color: "#4f7cff"
         },
         {
             step: "02",
-            title: "Create a Subscription",
-            desc: "Go to 'Create' and choose your method. 'XRP Smart Escrow' time-locks native funds, while 'RLUSD' sends Ripple's stablecoin. Use the 'Demo Address' button for a one-click setup during your first test.",
+            title: "Choose Your Payment Method",
+            desc: "Head to the 'Create' section. You have two options: use 'XRP Smart Escrow' to time-lock your native funds until a specific date, or use 'RLUSD' for a stable-value recurring payment experience.",
             icon: <Icons.Zap />,
             color: "#10b981"
         },
         {
             step: "03",
-            title: "Verify On-Chain",
-            desc: "Once submitted, you'll get a 'TX Hash' and an 'IPFS CID'. Click the link icons next to them to instantly verify the payment on the XRPL Explorer or view your immutable receipt stored on the IPFS network.",
+            title: "Submit & Secure",
+            desc: "Paste your recipient's address (or use our Demo Address), set your amount, and hit confirm. SubLedger will sign the transaction on-chain and instantly pin a cryptographic receipt to IPFS for permanent proof.",
             icon: <Icons.Check />,
             color: "#7c3aed"
+        },
+        {
+            step: "04",
+            title: "Immutable Verification",
+            desc: "After any transaction, you'll receive a unique TX Hash and an IPFS CID. You can use these to verify your payment live on the XRPL Explorer or retrieve your receipt from the global IPFS gateway.",
+            icon: <Icons.Link />,
+            color: "#06b6d4"
         }
     ];
 
@@ -36,7 +43,7 @@ export default function GettingStarted() {
                         Getting <span className="gradient-text">Started</span>
                     </h2>
                     <p style={{ color: "var(--text-secondary)", fontSize: "16px", maxWidth: "600px", margin: "0 auto" }}>
-                        SubLedger is a decentralized subscription layer. Here is how to manage your wallet, create subscriptions, and verify data on-chain.
+                        SubLedger is a decentralized subscription layer. Here is how you can go from zero to a live on-chain subscription in under 60 seconds.
                     </p>
                 </div>
 
@@ -75,21 +82,27 @@ export default function GettingStarted() {
                     <h3 style={{ fontSize: "1.5rem", fontWeight: 700, marginBottom: "24px", textAlign: "center" }}>Quick Essentials</h3>
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
                         <div className="glass-card" style={{ padding: "20px" }}>
-                            <div style={{ fontWeight: 700, marginBottom: "8px", color: "#4f7cff" }}>What is the Wallet Page for?</div>
+                            <div style={{ fontWeight: 700, marginBottom: "8px", color: "#4f7cff" }}>Wait, what is an Escrow?</div>
                             <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}>
-                                The **Wallet** page is your command center. Use it to generate test credentials, get free XRP from the faucet, or look up *any* recipient address to make sure they are active on the network before sending funds.
+                                An Escrow is a "Smart Contract" that holds funds in a vault. The funds cannot be touched by the sender OR the receiver until the time lock expires. It's the ultimate way to prove you have funds for a subscription.
                             </p>
                         </div>
                         <div className="glass-card" style={{ padding: "20px" }}>
-                            <div style={{ fontWeight: 700, marginBottom: "8px", color: "#10b981" }}>How do I verify a payment?</div>
+                            <div style={{ fontWeight: 700, marginBottom: "8px", color: "#10b981" }}>Why do I need a receipt?</div>
                             <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}>
-                                Every success screen provides a **TX Hash** (for the blockchain) and a **CID** (for the receipt). Verification is trustless—you don't need SubLedger to see it; you can use any XRPL Explorer or IPFS Gateway.
+                                Banks give you paper receipts; SubLedger gives you IPFS receipts. These are cryptographically signed JSON files that prove the transaction happened, stored forever on a decentralized file system.
                             </p>
                         </div>
                         <div className="glass-card" style={{ padding: "20px" }}>
-                            <div style={{ fontWeight: 700, marginBottom: "8px", color: "#7c3aed" }}>Wait, what is an Escrow?</div>
+                            <div style={{ fontWeight: 700, marginBottom: "8px", color: "#06b6d4" }}>The Wallet Manager</div>
                             <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}>
-                                An Escrow is a "Smart Vault" on the blockchain. Once you lock XRP in it, the funds are held securely until the time expires. It guarantees the merchant gets paid without them needing to control your wallet.
+                                The **Wallet** page is your command center. Use it to generate test accounts, claim free XRP from the faucet, and look up ANY XRPL address to check their real-time balance before sending a payment.
+                            </p>
+                        </div>
+                        <div className="glass-card" style={{ padding: "20px" }}>
+                            <div style={{ fontWeight: 700, marginBottom: "8px", color: "#7c3aed" }}>Is this on Mainnet?</div>
+                            <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                                Not yet. We are currently running on the **XRPL Testnet**. This means all funds are "test XRP" and have no real-world value. Perfect for building and testing your implementation!
                             </p>
                         </div>
                     </div>
