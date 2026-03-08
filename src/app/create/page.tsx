@@ -5,7 +5,7 @@ import { Icons, CopyBtn, SubscriptionResult, WalletType } from "@/components/Sha
 import Link from "next/link";
 
 export default function Create() {
-    const [paymentMode, setPaymentMode] = useState<"escrow" | "rlusd">("rlusd");
+    const [paymentMode, setPaymentMode] = useState<"escrow" | "rlusd">("escrow");
     const [wallet, setWallet] = useState<WalletType | null>(null);
     const [fundingWallet, setFundingWallet] = useState(false);
 
@@ -146,7 +146,7 @@ export default function Create() {
                     background: "rgba(255,255,255,0.04)", borderRadius: "12px", padding: "4px",
                     border: "1px solid rgba(255,255,255,0.08)",
                 }}>
-                    {(["rlusd", "escrow"] as const).map(mode => (
+                    {(["escrow", "rlusd"] as const).map(mode => (
                         <button key={mode} onClick={() => setPaymentMode(mode)} style={{
                             flex: 1, padding: "10px", borderRadius: "10px", border: "none",
                             cursor: "pointer", fontWeight: 600, fontSize: "13px", transition: "all 0.2s",
