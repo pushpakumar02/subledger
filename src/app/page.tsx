@@ -136,10 +136,7 @@ export default function Home() {
   const [fundingWallet, setFundingWallet] = useState(false);
   const [paymentMode, setPaymentMode] = useState<"escrow" | "rlusd">("rlusd"); // default RLUSD to impress judge
 
-  // AI Assist state
-  const [aiPrompt, setAiPrompt] = useState("");
-  const [aiLoading, setAiLoading] = useState(false);
-  const [aiSuggestion, setAiSuggestion] = useState<string>("");
+
 
   // Form state
   const [form, setForm] = useState({
@@ -187,34 +184,7 @@ export default function Home() {
     }
   };
 
-  // AI Assist
-  const handleAiAssist = async () => {
-    if (!aiPrompt.trim()) return;
-    setAiLoading(true);
-    setAiSuggestion("");
-    try {
-      const res = await fetch("/api/ai-assist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: aiPrompt }),
-      });
-      const data = await res.json();
-      if (data.result) {
-        const { amount, intervalDays, description, suggestion } = data.result;
-        setForm(f => ({
-          ...f,
-          amountXRP: String(amount || f.amountXRP),
-          intervalDays: String(intervalDays || f.intervalDays),
-          description: description || f.description,
-        }));
-        setAiSuggestion(suggestion || "");
-      }
-    } catch (e: any) {
-      setAiSuggestion("Couldn't connect to AI. Please fill in the form manually.");
-    } finally {
-      setAiLoading(false);
-    }
-  };
+
 
   // Create XRP Escrow subscription
   const handleSubmit = async (e: React.FormEvent) => {
@@ -524,51 +494,7 @@ export default function Home() {
               </div>
             )}
 
-            {/* AI Assist Box */}
-            <div className="glass-card" style={{
-              padding: "20px", marginBottom: "24px",
-              border: "1px solid rgba(6,182,212,0.2)",
-            }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "14px" }}>
-                <div style={{
-                  width: 28, height: 28, borderRadius: "8px",
-                  background: "rgba(6,182,212,0.15)", border: "1px solid rgba(6,182,212,0.3)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  color: "#06b6d4", fontSize: "14px",
-                }}><Icons.Bot /></div>
-                <span style={{ fontWeight: 600, fontSize: "14px" }}>Gemini AI Setup</span>
-                <span style={{
-                  fontSize: "11px", color: "#06b6d4", marginLeft: "auto",
-                  background: "rgba(6,182,212,0.1)", padding: "2px 8px", borderRadius: "10px"
-                }}>
-                  Powered by Gemini
-                </span>
-              </div>
-              <div style={{ display: "flex", gap: "10px" }}>
-                <input
-                  className="input-field"
-                  value={aiPrompt}
-                  onChange={e => setAiPrompt(e.target.value)}
-                  placeholder='e.g. "Monthly $10 newsletter subscription" or "Weekly podcast access 5 XRP"'
-                  onKeyDown={e => e.key === "Enter" && handleAiAssist()}
-                  style={{ flex: 1 }}
-                />
-                <button className="btn-primary" onClick={handleAiAssist} disabled={aiLoading}
-                  style={{ padding: "12px 20px", flexShrink: 0, display: "flex", alignItems: "center", gap: "6px" }}>
-                  {aiLoading ? <Icons.Spinner /> : <Icons.Bot />}
-                  {aiLoading ? "" : "Fill"}
-                </button>
-              </div>
-              {aiSuggestion && (
-                <div style={{
-                  marginTop: "12px", padding: "10px 14px",
-                  background: "rgba(6,182,212,0.08)", border: "1px solid rgba(6,182,212,0.15)",
-                  borderRadius: "8px", fontSize: "13px", color: "#06b6d4",
-                }}>
-                  🤖 {aiSuggestion}
-                </div>
-              )}
-            </div>
+
 
             {/* Wallet helper */}
             {!wallet && (
