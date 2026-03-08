@@ -81,7 +81,13 @@ export async function POST(req: NextRequest) {
                 issuer: RLUSD_ISSUER,
                 value: String(parseFloat(amountRLUSD) * 1.01), // 1% slippage
             },
-            Memo_Data: description,
+            Memos: description ? [
+                {
+                    Memo: {
+                        MemoData: Buffer.from(description, 'utf8').toString('hex').toUpperCase(),
+                    }
+                }
+            ] : undefined,
             Sequence: sequence2,
             Fee: "12",
             LastLedgerSequence: ledger2.ledger_current_index + 20,
