@@ -1,92 +1,107 @@
 "use client";
 
-import { Icons, FeatureCard, StatCard } from "@/components/Shared";
+import { Icons } from "@/components/Shared";
+import Link from "next/link";
 
-export default function HowItWorks() {
+export default function GettingStarted() {
+    const steps = [
+        {
+            step: "01",
+            title: "Wallet Manager",
+            desc: "Visit the 'Wallet' tab to manage your test accounts. You can 'Fund' a new wallet to instantly get 100 test XRP, or use the 'Lookup' tool to check the live balance and transaction status of any XRPL address.",
+            icon: <Icons.Wallet />,
+            color: "#4f7cff"
+        },
+        {
+            step: "02",
+            title: "Create a Subscription",
+            desc: "Go to 'Create' and choose your method. 'XRP Smart Escrow' time-locks native funds, while 'RLUSD' sends Ripple's stablecoin. Use the 'Demo Address' button for a one-click setup during your first test.",
+            icon: <Icons.Zap />,
+            color: "#10b981"
+        },
+        {
+            step: "03",
+            title: "Verify On-Chain",
+            desc: "Once submitted, you'll get a 'TX Hash' and an 'IPFS CID'. Click the link icons next to them to instantly verify the payment on the XRPL Explorer or view your immutable receipt stored on the IPFS network.",
+            icon: <Icons.Check />,
+            color: "#7c3aed"
+        }
+    ];
+
     return (
         <main style={{ paddingTop: "120px", paddingBottom: "80px" }}>
             <div className="slide-up" style={{ maxWidth: "900px", margin: "0 auto", padding: "0 24px" }}>
-                <h2 style={{ textAlign: "center", fontSize: "2rem", fontWeight: 800, marginBottom: "8px" }}>
-                    Getting <span className="gradient-text">Started</span>
-                </h2>
-                <p style={{ textAlign: "center", color: "var(--text-secondary)", marginBottom: "40px" }}>
-                    Follow these simple steps to test SubLedger's cutting-edge payment infrastructure.
-                </p>
+                <div style={{ textAlign: "center", marginBottom: "50px" }}>
+                    <h2 style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: "12px" }}>
+                        Getting <span className="gradient-text">Started</span>
+                    </h2>
+                    <p style={{ color: "var(--text-secondary)", fontSize: "16px", maxWidth: "600px", margin: "0 auto" }}>
+                        SubLedger is a decentralized subscription layer. Here is how to manage your wallet, create subscriptions, and verify data on-chain.
+                    </p>
+                </div>
 
-                {/* Steps */}
-                {[
-                    {
-                        step: "01", color: "#4f7cff",
-                        title: "Get a Test Wallet",
-                        desc: "Go to the 'Wallet' tab and click 'Get Wallet'. The XRPL Testnet instantly generates a real wallet for you and funds it with 100 free test XRP. This is your 'Sender' wallet.",
-                        tech: "Testnet Faucet",
-                    },
-                    {
-                        step: "02", color: "#7c3aed",
-                        title: "Test 'XRP Smart Escrow'",
-                        desc: "Go to the 'Create' tab. Click the 'Use Demo Address' button to instantly fill in a Recipient. Since your wallet organically holds native XRP, you can immediately hit 'Lock in XRP Escrow' to see your funds securely locked on-chain!",
-                        tech: "Native XRP",
-                    },
-                    {
-                        step: "03", color: "#10b981",
-                        title: "Test 'RLUSD Stablecoin'",
-                        desc: "To test Ripple's official stablecoin, you must get test RLUSD. Click the blue 'Get RLUSD' link to visit Ripple's faucet. Paste both your Sender and Recipient addresses in their portal to mathematically open the stablecoin trustline. Then, hit Send!",
-                        tech: "tryrlusd.com",
-                    },
-                    {
-                        step: "04", color: "#06b6d4",
-                        title: "View your immuntable receipt",
-                        desc: "Instantly after sending a payment or escrow, SubLedger uploads a structured JSON receipt directly to the decentralized IPFS network. You can copy the IPFS CID or view the raw TX Hash live on the XRPL Explorer!",
-                        tech: "Pinata IPFS",
-                    },
-                ].map((item, i) => (
-                    <div key={i} style={{ display: "flex", gap: "20px", marginBottom: "32px" }}>
-                        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <div style={{ display: "grid", gap: "24px" }}>
+                    {steps.map((s, i) => (
+                        <div key={i} className="glass-card" style={{
+                            padding: "32px",
+                            display: "flex",
+                            gap: "24px",
+                            alignItems: "center",
+                            border: `1px solid ${s.color}15`
+                        }}>
                             <div style={{
-                                width: 48, height: 48, borderRadius: "14px", flexShrink: 0,
-                                background: `${item.color}20`, border: `2px solid ${item.color}50`,
+                                width: "64px", height: "64px", borderRadius: "16px",
+                                background: `${s.color}15`, color: s.color,
                                 display: "flex", alignItems: "center", justifyContent: "center",
-                                fontWeight: 900, fontSize: "14px", color: item.color,
-                                fontFamily: "'Space Grotesk', sans-serif",
-                            }}>{item.step}</div>
-                            {i < 3 && <div style={{ width: 2, flex: 1, background: `linear-gradient(to bottom, ${item.color}40, transparent)`, marginTop: "8px" }} />}
-                        </div>
-                        <div className="glass-card" style={{ flex: 1, padding: "20px", marginBottom: i < 3 ? "0" : undefined }}>
-                            <div style={{ fontWeight: 700, fontSize: "16px", marginBottom: "8px" }}>{item.title}</div>
-                            <div style={{ color: "var(--text-secondary)", fontSize: "14px", lineHeight: 1.6, marginBottom: "12px" }}>
-                                {item.desc}
-                            </div>
-                            <span style={{
-                                fontSize: "11px", fontWeight: 600, borderRadius: "10px",
-                                padding: "4px 12px", color: item.color,
-                                background: `${item.color}15`, border: `1px solid ${item.color}30`,
-                            }}>{item.tech}</span>
-                        </div>
-                    </div>
-                ))}
-
-                {/* Architecture diagram */}
-                <div className="glass-card" style={{ padding: "28px", marginTop: "16px" }}>
-                    <h3 style={{ fontWeight: 700, marginBottom: "20px", textAlign: "center" }}>Tech Stack</h3>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px,1fr))", gap: "12px" }}>
-                        {[
-                            { name: "XRPL", desc: "On-chain escrow & settlement", color: "#4f7cff", icon: "⚡" },
-                            { name: "Pinata", desc: "IPFS receipt pinning", color: "#f59e0b", icon: "📌" },
-                            { name: "RLUSD", desc: "Ripple Stablecoin support", color: "#10b981", icon: "💵" },
-                            { name: "Next.js", desc: "Full-stack web app", color: "#7c3aed", icon: "⚙️" },
-                        ].map((t, i) => (
-                            <div key={i} style={{
-                                background: `${t.color}08`, border: `1px solid ${t.color}20`,
-                                borderRadius: "10px", padding: "16px", textAlign: "center",
+                                fontSize: "24px", flexShrink: 0
                             }}>
-                                <div style={{ fontSize: "24px", marginBottom: "6px" }}>{t.icon}</div>
-                                <div style={{ fontWeight: 700, color: t.color, marginBottom: "4px" }}>{t.name}</div>
-                                <div style={{ fontSize: "12px", color: "var(--text-secondary)" }}>{t.desc}</div>
+                                {s.icon}
                             </div>
-                        ))}
+                            <div style={{ flex: 1 }}>
+                                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
+                                    <span style={{ fontSize: "12px", fontWeight: 800, color: s.color, opacity: 0.8 }}>STEP {s.step}</span>
+                                    <h3 style={{ fontSize: "18px", fontWeight: 700 }}>{s.title}</h3>
+                                </div>
+                                <p style={{ color: "var(--text-secondary)", lineHeight: 1.6, fontSize: "14px" }}>
+                                    {s.desc}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* FAQ/Quick Tips */}
+                <div style={{ marginTop: "60px" }}>
+                    <h3 style={{ fontSize: "1.5rem", fontWeight: 700, marginBottom: "24px", textAlign: "center" }}>Quick Essentials</h3>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
+                        <div className="glass-card" style={{ padding: "20px" }}>
+                            <div style={{ fontWeight: 700, marginBottom: "8px", color: "#4f7cff" }}>What is the Wallet Page for?</div>
+                            <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                                The **Wallet** page is your command center. Use it to generate test credentials, get free XRP from the faucet, or look up *any* recipient address to make sure they are active on the network before sending funds.
+                            </p>
+                        </div>
+                        <div className="glass-card" style={{ padding: "20px" }}>
+                            <div style={{ fontWeight: 700, marginBottom: "8px", color: "#10b981" }}>How do I verify a payment?</div>
+                            <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                                Every success screen provides a **TX Hash** (for the blockchain) and a **CID** (for the receipt). Verification is trustless—you don't need SubLedger to see it; you can use any XRPL Explorer or IPFS Gateway.
+                            </p>
+                        </div>
+                        <div className="glass-card" style={{ padding: "20px" }}>
+                            <div style={{ fontWeight: 700, marginBottom: "8px", color: "#7c3aed" }}>Wait, what is an Escrow?</div>
+                            <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                                An Escrow is a "Smart Vault" on the blockchain. Once you lock XRP in it, the funds are held securely until the time expires. It guarantees the merchant gets paid without them needing to control your wallet.
+                            </p>
+                        </div>
                     </div>
+                </div>
+
+                <div style={{ marginTop: "64px", textAlign: "center" }}>
+                    <Link href="/create" className="btn-primary" style={{ textDecoration: "none", padding: "16px 32px", fontSize: "16px" }}>
+                        Ready to Start? Create a Subscription →
+                    </Link>
                 </div>
             </div>
         </main>
     );
 }
+
