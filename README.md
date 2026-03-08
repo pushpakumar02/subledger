@@ -2,6 +2,27 @@
 
 SubLedger is a decentralized subscription and recurring payment layer built on the XRP Ledger. It enables users to secure long-term financial commitments through on-chain Smart Escrows or direct stablecoin (RLUSD) transfers, with every transaction backed by an immutable cryptographic receipt pinned to IPFS.
 
+```mermaid
+graph TD
+    User([User]) --> UI[Next.js Frontend]
+    UI --> API[API Routes]
+    
+    subgraph "Blockchain Layer"
+        API --> XRPL{XRP Ledger}
+        XRPL -- "Native XRP" --> Escrow[Smart Escrow Vault]
+        XRPL -- "Stablecoin" --> RLUSD[RLUSD Payment]
+    end
+    
+    subgraph "Storage Layer"
+        API --> Pinata[Pinata Cloud]
+        Pinata --> IPFS[(IPFS Network)]
+    end
+    
+    XRPL -- "TX Hash" --> UI
+    IPFS -- "Receipt CID" --> UI
+    UI -- "Success Screen" --> User
+```
+
 ## Hackathon Track Alignment
 
 ### XRPL Real-World Impact
