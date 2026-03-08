@@ -250,6 +250,9 @@ export default function Create() {
                             onChange={e => setForm(f => ({ ...f, recipientAddress: e.target.value }))}
                             placeholder="rXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
                         />
+                        <div style={{ fontSize: "11px", color: "var(--text-secondary)", marginTop: "4px" }}>
+                            💡 You can use `r11j1eQGZ1eX9n12Gyy4Qvev5EewyVzP5u` (a random testnet address) or create a second wallet in the Wallet Manager to use as the receiver.
+                        </div>
                     </div>
 
                     <div style={{ display: "grid", gridTemplateColumns: paymentMode === "rlusd" ? "1fr" : "1fr 1fr", gap: "16px" }}>
