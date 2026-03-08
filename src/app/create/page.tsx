@@ -244,9 +244,19 @@ export default function Create() {
                     </div>
 
                     <div>
-                        <label style={{ display: "block", fontSize: "13px", fontWeight: 600, marginBottom: "8px", color: "var(--text-secondary)" }}>
-                            Recipient Address *
-                        </label>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "8px" }}>
+                            <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "var(--text-secondary)" }}>
+                                Recipient Address *
+                            </label>
+                            <button type="button" onClick={() => setForm(f => ({ ...f, recipientAddress: "rG3iQkU3uGyDwqYwXzCM19AxxqhnhuaoLi" }))}
+                                style={{
+                                    background: "rgba(79,124,255,0.1)", border: "1px solid rgba(79,124,255,0.2)",
+                                    borderRadius: "4px", color: "#4f7cff", fontSize: "10px", padding: "2px 6px",
+                                    cursor: "pointer", fontWeight: 600, transition: "background 0.2s"
+                                }}>
+                                Use Demo Address
+                            </button>
+                        </div>
                         <input className="input-field" required
                             value={form.recipientAddress}
                             onChange={e => setForm(f => ({ ...f, recipientAddress: e.target.value }))}
