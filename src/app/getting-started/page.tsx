@@ -9,29 +9,29 @@ export default function GettingStarted() {
             step: "01",
             title: "Prepare Your Wallet",
             desc: "Start by visiting the 'Wallet' tab. You can instantly generate a fresh XRPL Testnet address with 100 test XRP. Copy your Address and Secret Seed—you'll need them to sign your first transaction.",
-            icon: <Icons.Wallet />,
-            color: "#4f7cff"
+            color: "#4f7cff",
+            tag: "Testnet Faucet"
         },
         {
             step: "02",
             title: "Choose Your Payment Method",
             desc: "Head to the 'Create' section. You have two options: use 'XRP Smart Escrow' to time-lock your native funds until a specific date, or use 'RLUSD' for a stable-value recurring payment experience.",
-            icon: <Icons.Zap />,
-            color: "#10b981"
+            color: "#7c3aed",
+            tag: "Native XRP"
         },
         {
             step: "03",
             title: "Submit & Secure",
             desc: "Paste your recipient's address (or use our Demo Address), set your amount, and hit confirm. SubLedger will sign the transaction on-chain and instantly pin a cryptographic receipt to IPFS for permanent proof.",
-            icon: <Icons.Check />,
-            color: "#7c3aed"
+            color: "#10b981",
+            tag: "tryrlusd.com"
         },
         {
             step: "04",
             title: "Immutable Verification",
             desc: "After any transaction, you'll receive a unique TX Hash and an IPFS CID. You can use these to verify your payment live on the XRPL Explorer or retrieve your receipt from the global IPFS gateway.",
-            icon: <Icons.Link />,
-            color: "#06b6d4"
+            color: "#06b6d4",
+            tag: "Pinata IPFS"
         }
     ];
 
@@ -43,66 +43,74 @@ export default function GettingStarted() {
                         Getting <span className="gradient-text">Started</span>
                     </h2>
                     <p style={{ color: "var(--text-secondary)", fontSize: "16px", maxWidth: "600px", margin: "0 auto" }}>
-                        SubLedger is a decentralized subscription layer. Here is how you can go from zero to a live on-chain subscription in under 60 seconds.
+                        Follow these simple steps to test SubLedger's cutting-edge payment infrastructure.
                     </p>
                 </div>
 
-                <div style={{ display: "grid", gap: "24px" }}>
-                    {steps.map((s, i) => (
-                        <div key={i} className="glass-card" style={{
-                            padding: "32px",
-                            display: "flex",
-                            gap: "24px",
-                            alignItems: "center",
-                            border: `1px solid ${s.color}15`
-                        }}>
+                {/* Vertical Timeline Steps */}
+                {steps.map((s, i) => (
+                    <div key={i} style={{ display: "flex", gap: "24px", marginBottom: i === steps.length - 1 ? "0" : "32px" }}>
+                        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                             <div style={{
-                                width: "64px", height: "64px", borderRadius: "16px",
-                                background: `${s.color}15`, color: s.color,
-                                display: "flex", alignItems: "center", justifyContent: "center",
-                                fontSize: "24px", flexShrink: 0
+                                width: "48px", height: "48px", borderRadius: "14px",
+                                background: "rgba(5,5,16,0.5)", border: `2px solid ${s.color}60`,
+                                color: s.color, display: "flex", alignItems: "center", justifyContent: "center",
+                                fontSize: "16px", fontWeight: 900, fontFamily: "monospace", flexShrink: 0
                             }}>
-                                {s.icon}
+                                {s.step}
                             </div>
-                            <div style={{ flex: 1 }}>
-                                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
-                                    <span style={{ fontSize: "12px", fontWeight: 800, color: s.color, opacity: 0.8 }}>STEP {s.step}</span>
-                                    <h3 style={{ fontSize: "18px", fontWeight: 700 }}>{s.title}</h3>
-                                </div>
-                                <p style={{ color: "var(--text-secondary)", lineHeight: 1.6, fontSize: "14px" }}>
-                                    {s.desc}
-                                </p>
-                            </div>
+                            {i < steps.length - 1 && (
+                                <div style={{
+                                    width: "2px", flex: 1,
+                                    background: `linear-gradient(to bottom, ${s.color}50, ${steps[i + 1].color}50)`,
+                                    marginTop: "12px"
+                                }} />
+                            )}
                         </div>
-                    ))}
-                </div>
+
+                        <div className="glass-card" style={{ flex: 1, padding: "28px" }}>
+                            <h3 style={{ fontSize: "20px", fontWeight: 700, marginBottom: "12px" }}>{s.title}</h3>
+                            <p style={{ color: "var(--text-secondary)", lineHeight: 1.6, fontSize: "15px", marginBottom: "20px" }}>
+                                {s.desc}
+                            </p>
+                            <span style={{
+                                display: "inline-block",
+                                padding: "4px 12px", borderRadius: "8px", border: `1px solid ${s.color}40`,
+                                background: `${s.color}15`, color: s.color,
+                                fontSize: "12px", fontWeight: 700
+                            }}>
+                                {s.tag}
+                            </span>
+                        </div>
+                    </div>
+                ))}
 
                 {/* FAQ/Quick Tips */}
-                <div style={{ marginTop: "60px" }}>
-                    <h3 style={{ fontSize: "1.5rem", fontWeight: 700, marginBottom: "24px", textAlign: "center" }}>Quick Essentials</h3>
+                <div style={{ marginTop: "80px" }}>
+                    <h3 style={{ fontSize: "1.5rem", fontWeight: 700, marginBottom: "32px", textAlign: "center" }}>Quick Essentials</h3>
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
                         <div className="glass-card" style={{ padding: "20px" }}>
                             <div style={{ fontWeight: 700, marginBottom: "8px", color: "#4f7cff" }}>Wait, what is an Escrow?</div>
                             <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}>
-                                An Escrow is a "Smart Contract" that holds funds in a vault. The funds cannot be touched by the sender OR the receiver until the time lock expires. It's the ultimate way to prove you have funds for a subscription.
+                                An Escrow is a "Smart Contract" that holds funds in a vault. The funds cannot be touched by anyone until the time lock expires.
                             </p>
                         </div>
                         <div className="glass-card" style={{ padding: "20px" }}>
                             <div style={{ fontWeight: 700, marginBottom: "8px", color: "#10b981" }}>Why do I need a receipt?</div>
                             <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}>
-                                Banks give you paper receipts; SubLedger gives you IPFS receipts. These are cryptographically signed JSON files that prove the transaction happened, stored forever on a decentralized file system.
+                                SubLedger gives you IPFS receipts. These are cryptographically signed JSON files stored forever on a decentralized file system.
                             </p>
                         </div>
                         <div className="glass-card" style={{ padding: "20px" }}>
                             <div style={{ fontWeight: 700, marginBottom: "8px", color: "#06b6d4" }}>The Wallet Manager</div>
                             <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}>
-                                The **Wallet** page is your command center. Use it to generate test accounts, claim free XRP from the faucet, and look up ANY XRPL address to check their real-time balance before sending a payment.
+                                The **Wallet** page is your command center. Use it to generate accounts, claim free XRP, and check ANY address balance.
                             </p>
                         </div>
                         <div className="glass-card" style={{ padding: "20px" }}>
                             <div style={{ fontWeight: 700, marginBottom: "8px", color: "#7c3aed" }}>Is this on Mainnet?</div>
                             <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}>
-                                Not yet. We are currently running on the **XRPL Testnet**. This means all funds are "test XRP" and have no real-world value. Perfect for building and testing your implementation!
+                                Not yet. We are running on **XRPL Testnet**. Perfect for building and testing without real-world financial risk!
                             </p>
                         </div>
                     </div>
@@ -117,4 +125,3 @@ export default function GettingStarted() {
         </main>
     );
 }
-
