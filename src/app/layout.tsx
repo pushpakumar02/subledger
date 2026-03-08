@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   keywords: "XRPL, XRP Ledger, recurring payments, crypto subscriptions, DeFi, microfinance, RLUSD, Pinata, IPFS",
   openGraph: {
     title: "SubLedger — Recurring Payments for Everyone",
-    description: "SubLedger — Decentralized subscription infrastructure powered by XRPL, Pinata & Gemini AI",
+    description: "SubLedger — Decentralized subscription infrastructure powered by XRPL & Pinata",
     type: "website",
   },
 };
