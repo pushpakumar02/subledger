@@ -7,7 +7,7 @@ export default function HowItWorks() {
         <main style={{ paddingTop: "120px", paddingBottom: "80px" }}>
             <div className="slide-up" style={{ maxWidth: "900px", margin: "0 auto", padding: "0 24px" }}>
                 <h2 style={{ textAlign: "center", fontSize: "2rem", fontWeight: 800, marginBottom: "8px" }}>
-                    How <span className="gradient-text">SubLedger</span> Works
+                    Getting <span className="gradient-text">Started</span>
                 </h2>
                 <p style={{ textAlign: "center", color: "var(--text-secondary)", marginBottom: "40px" }}>
                     Three technologies, one seamless payment experience.

@@ -41,7 +41,7 @@ export function Navigation() {
                         { href: "/", label: "Home" },
                         { href: "/create", label: "Create" },
                         { href: "/wallet", label: "Wallet" },
-                        { href: "/how-it-works", label: "How It Works" },
+                        { href: "/getting-started", label: "Getting Started" },
                     ].map(tab => (
                         <Link key={tab.href} href={tab.href}
                             style={{
