@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { pinReceiptToIPFS } from "../pin-receipt/route";
+import { pinReceiptToIPFS } from "@/lib/pinata";
 
 const XRPL_TESTNET = "https://s.altnet.rippletest.net:51234";
 
