@@ -1,5 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
-import * as xrpl from "xrpl";
+
+const XRPL_TESTNET = "https://s.altnet.rippletest.net:51234";
+
+async function xrplRequest(method: string, params: any) {
+    const res = await fetch(XRPL_TESTNET, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ method, params: [params] }),
+    });
+    const json = await res.json();
+    return json.result;
+}
 
 export async function POST(req: NextRequest) {
     try {
@@ -9,36 +20,32 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: "Address required" }, { status: 400 });
         }
 
-        const client = new xrpl.Client("wss://s.altnet.rippletest.net:51233");
-        await client.connect();
-
         let balance = "0";
         let transactions: any[] = [];
 
+        // Get account info
         try {
-            const accountInfo = await client.request({
-                command: "account_info",
+            const accountInfo = await xrplRequest("account_info", {
                 account: address,
                 ledger_index: "validated",
             });
-            balance = xrpl.dropsToXrp(accountInfo.result.account_data.Balance);
+            if (accountInfo?.account_data?.Balance) {
+                balance = String(parseInt(accountInfo.account_data.Balance) / 1_000_000);
+            }
         } catch (e) {
-            // Account might not exist yet
             balance = "0";
         }
 
+        // Get transaction history
         try {
-            const txHistory = await client.request({
-                command: "account_tx",
+            const txHistory = await xrplRequest("account_tx", {
                 account: address,
                 limit: 10,
             });
-            transactions = txHistory.result.transactions || [];
+            transactions = txHistory?.transactions || [];
         } catch (e) {
             transactions = [];
         }
-
-        await client.disconnect();
 
         return NextResponse.json({
             success: true,
