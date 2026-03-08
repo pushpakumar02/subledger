@@ -3,8 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 const XRPL_TESTNET = "https://s.altnet.rippletest.net:51234";
 
 // RLUSD on XRPL Testnet
-export const RLUSD_ISSUER = "rLUSDtykL2NVz3HJe1Jqoc7dsxWFVcsmuK";
-export const RLUSD_CURRENCY = "524C555344000000000000000000000000000000"; // "RLUSD" in 40-char hex
+const RLUSD_ISSUER = "rLUSDtykL2NVz3HJe1Jqoc7dsxWFVcsmuK";
+const RLUSD_CURRENCY = "524C555344000000000000000000000000000000"; // "RLUSD" in 40-char hex
 
 async function xrplRequest(method: string, params: any) {
     const res = await fetch(XRPL_TESTNET, {
