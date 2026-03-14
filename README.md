@@ -2,6 +2,12 @@
 
 SubLedger is a decentralized subscription and recurring payment layer built on the XRP Ledger. It enables users to secure long-term financial commitments through on-chain Smart Escrows or direct stablecoin (RLUSD) transfers, with every transaction backed by an immutable cryptographic receipt pinned to IPFS.
 
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=CmygRbX6L4Q">
+    <img src="https://img.youtube.com/vi/CmygRbX6L4Q/maxresdefault.jpg" alt="SubLedger Demo Video" width="800" />
+  </a>
+</div>
+
 ```mermaid
 graph TD
     User([User]) --> UI[Next.js Frontend]
